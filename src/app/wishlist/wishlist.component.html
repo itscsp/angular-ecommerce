@@ -1,0 +1,31 @@
+<div *ngIf="isWishOpen" (click)="toggleWishSidebar()" class='h-screen w-screen overlay'></div>
+<div [ngClass]="{'left-0':isWishOpen, '-left-full': !isWishOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px]" >
+    <div class="flex items-center justify-between py-6 border-b">
+      <p class="uppercase text-sm font-semibold">Shopping Bag 100</p>
+      <div (click)="toggleWishSidebar()" class="cursor-pointer w-8 h-8 flex justify-center items-center">
+        icon
+      </div>
+    </div>
+
+    <div class="cart-item-section overflow-y-auto">
+      <div >
+        cart item Comp Comes here
+      </div>
+      <p class="pt-3">Your cart is empty!</p>
+    </div>
+
+    <div class="flex justify-between items-center mt-2">
+      <div class="uppercase font-semibold">
+        <span>Total: </span> 1000
+      </div>
+      <div class="cursor-pointer bg-red-500 p-3 w-12 flex justify-center items-center text-white text-xl">
+        icon
+      </div>
+    </div>
+
+    <div class="flex py-2">
+      <a class="flex-1 text-center bg-red-500 text-white py-4 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+        Place Order
+      </a>
+    </div>
+</div>
