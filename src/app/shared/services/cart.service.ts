@@ -5,10 +5,11 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  private isCartSiderBarOpen = signal<boolean>(false);
-  private isWishSiderBarOpen = signal<boolean>(false);
+  private isCartSiderBarOpen = signal<boolean>(false); // Cart Sidebar
+  private isWishSiderBarOpen = signal<boolean>(false); // Wish Sidebar
 
 
+  // Toggle Sidebar
   toggleSidebar(type: 'wish' | 'cart') {
 
     if(type === 'cart'){
@@ -20,6 +21,7 @@ export class CartService {
 
   }
 
+  // Publish sidebar state
   sidebarState(type: 'wish' | 'cart'){
 
     if(type === 'cart'){
