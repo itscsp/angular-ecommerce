@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="py-16">
+    <div class="container mx-auto">
+        <div *ngIf="products().length; else loading">
+            <div  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[30px]">
+                <app-product  *ngFor="let product of products()" [product]="product"></app-product>
+            </div>
+        </div>
+        
+        <ng-template #loading>
+            <p>Loading products...</p>
+        </ng-template>
+        
+    </div>
+</div>

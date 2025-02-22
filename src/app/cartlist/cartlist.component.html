@@ -1,27 +1,26 @@
-<div *ngIf="isOpen" (click)="toggleSidebar()" class='h-screen w-screen overlay'></div>
+<div *ngIf="isOpen" (click)="closeCart()" class='h-screen w-screen overlay'></div>
 <div [ngClass]="{'right-0':isOpen, '-right-full': !isOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px]" >
     <div class="flex items-center justify-between py-6 border-b">
-      <p class="uppercase text-sm font-semibold">Shopping Bag 100</p>
-      <div (click)="toggleSidebar()" class="cursor-pointer w-8 h-8 flex justify-center items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-[36px]"  ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      <p class="uppercase text-xl">Shopping Bag</p>
+      <div (click)="closeCart()" class="cursor-pointer w-8 h-8 flex justify-center items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-[26px]"  ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
       </div>
     </div>
 
-    <div class="cart-item-section overflow-y-auto">
-      <div >
-        cart item Comp Comes here
+    <div class="cart-items" *ngIf="cartItems().length > 0; else emptyCart">
+      
+      <div class='flex  gap-x-4 py-2 lg:px-6 border-b border-gray-300' *ngFor="let item of cartItems()" >
+        <app-cartitem [data]="item"></app-cartitem>
       </div>
-      <p class="pt-3">Your cart is empty!</p>
     </div>
 
-    <div class="flex justify-between items-center mt-2">
-      <div class="uppercase font-semibold">
-        <span>Total: </span> 1000
+  
+    <ng-template #emptyCart>
+      <div class="empty-cart mt-5">
+        <p>Your cart is empty</p>
       </div>
-      <div class="cursor-pointer bg-red-500 p-3 w-12 flex justify-center items-center text-white text-xl">
-        icon
-      </div>
-    </div>
+    </ng-template>
+
 
     <div class="flex py-2">
       <a class="flex-1 text-center bg-red-500 text-white py-4 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">

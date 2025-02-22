@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { CartlistComponent } from './cartlist/cartlist.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HeaderComponent, CartlistComponent, WishlistComponent]
+  imports: [HeaderComponent, CartlistComponent, WishlistComponent, RouterOutlet]
 })
 export class AppComponent {
 

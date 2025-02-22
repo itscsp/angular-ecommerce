@@ -1,16 +1,16 @@
 <header class="w-full z-10 transition-all ease-out duration-500 header">
     <div class='container mx-auto py-4 flex justify-between items-center'>
-      <div (click)="toggleSidebar('wish')" class="cursor-pointer heart-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-[36px]"  viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="red" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+      <div (click)="toggleSidebar('wish')" class="cursor-pointer heart-icon" [class.active]="wishLength()">
+        <svg stroke="currentColor" fill="red" stroke-width="0" viewBox="0 0 24 24" height="42px" width="42px" xmlns="http://www.w3.org/2000/svg" ngClass="pluse:"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 0 1-.686 0 16.709 16.709 0 0 1-.465-.252 31.147 31.147 0 0 1-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0 1 14 20.408Z"></path><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 0 1-.686 0 16.709 16.709 0 0 1-.465-.252 31.147 31.147 0 0 1-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0 1 14 20.408Z"></path></svg>
       </div>
-      <a  class='text-4xl font-medium'>
+      <a routerLink="./"  class='text-4xl font-medium'>
         E Shop
       </a>
-      <div (click)="toggleSidebar('cart')" class='cursor-pointer relative'>
+      <div (click)="toggleSidebar('cart')" class='cursor-pointer relative' >
         
         <fa-icon [icon]="faCartShopping"  [size]="'2x'"></fa-icon>
-          <span class='bg-red-500 absolute -right-2 top-0 text-[12px] w-[18px] h-[18px] rounded-full text-center text-white'>
-            1
+          <span *ngIf="cartLength()" class='bg-red-500 absolute -right-2 top-0 text-[12px] w-[18px] h-[18px] rounded-full text-center text-white'>
+            {{cartLength()}}
           </span>
       </div> 
   </div>

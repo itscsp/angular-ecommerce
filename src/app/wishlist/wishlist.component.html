@@ -1,32 +1,40 @@
 <div *ngIf="isWishOpen" (click)="toggleWishSidebar()" class='h-screen w-screen overlay'></div>
-<div [ngClass]="{'left-0':isWishOpen, '-left-full': !isWishOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px]" >
+<div [ngClass]="{'left-0':isWishOpen, '-left-full': !isWishOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px]">
     <div class="flex items-center justify-between py-6 border-b">
-      <p class="uppercase text-sm font-semibold">Shopping Bag 100</p>
+      <p class="uppercase text-lg">Wishlist</p>
       <div (click)="toggleWishSidebar()" class="cursor-pointer w-8 h-8 flex justify-center items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-[36px]"  ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-[36px]">
+          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+        </svg>
       </div>
     </div>
 
-    <div class="cart-item-section overflow-y-auto">
-      <div >
-        cart item Comp Comes here
+    <div class="wish-items" *ngIf="wishItems().length > 0; else emptyWish">
+      <div *ngFor="let item of wishItems()" class='w-full min-h-[150px] flex items-center gap-x-4'>
+        <a [routerLink]="['/product', item.id]">
+          <img class='max-w-[80px]' [src]="item.image" [alt]="item.title" />
+        </a>
+        <div class='w-full flex flex-col'>
+          <div class='flex justify-between mb-2'>
+            <a [routerLink]="['/product', item.id]" class='text-sm uppercase font-medium max-w-[240px] text-primary hover:underline'>{{item.title}}</a>
+            <div (click)="removeFromWish(item.id)" class="cursor-pointer">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#D9D9D9" d="M292.7 840h438.6l24.2-512h-487z"></path>
+                <path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-504-72h304v72H360v-72zm371.3 656H292.7l-24.2-512h487l-24.2 512z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class='flex flex-1 gap-2 justify-between mt-3 flex-wrap md:flex-nowrap'>
+            <div class="flex-1 ">${{item.price}}</div>
+            <a class='flex-1 text-center bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300' [routerLink]="['product/',item.id]">View</a>
+          </div>
+        </div>
       </div>
-      <p class="pt-3">Your cart is empty!</p>
     </div>
 
-    <div class="flex justify-between items-center mt-2">
-      <div class="uppercase font-semibold">
-        <span>Total: </span> 1000
+    <ng-template #emptyWish>
+      <div class="empty-cart mt-5">
+        <p>Your Wishlist is empty</p>
       </div>
-      <div class="cursor-pointer bg-red-500 p-3 w-12 flex justify-center items-center text-white text-xl">
-        icon
-      </div>
-    </div>
-
-    <div class="flex py-2">
-      <a class="flex-1 text-center bg-red-500 text-white py-4 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
-        Place Order
-      </a>
-    </div>
+    </ng-template>
 </div>

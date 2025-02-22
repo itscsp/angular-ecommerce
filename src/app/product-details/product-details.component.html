@@ -1,0 +1,26 @@
+<section class='pt-6 pb-12 lg:py-32 h-screen- flex items-center'>
+    <div class='container mx-auto'>
+      <div class='flex flex-col lg:flex-row items-center' *ngIf="product(); else loading">
+        <div class='flex flex-1 justify-center items-center mb-8 lg:mb-0'>
+          <img class='max-w-[200px] lg:max-w-sm' [src]="product()?.image" [alt]="product()?.title" />
+        </div>
+
+        <div class='flex-1 text-center lg:text-left '>
+          <h1 class='text-[22px] md:text-[26px] font-medium mb-2'>{{product()?.title}}</h1>
+          <div class='flex justify-between align-middle my-4'>
+            <p class='text-xl'>${{product()?.price}}</p> 
+            <app-rating [rating]="product()?.rating" />
+          </div>
+          <p>{{product()?.description}}</p>
+          <div class='flex align-middle mt-4 gap-1'>
+            <button (click)="addToCartHandler()"  class='flex-1 text-center bg-blue-500 cursor-pointer text-white py-2 px-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300'>Add To Cart</button>
+            <button (click)="addToWishHandler(!isInWishlist() ? 'ADD' : 'REMOVE')" class='flex-1 text-center bg-red-500  cursor-pointer text-white py-2 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300'>{{ isInWishlist() ? 'Remove From Wishlist' : 'Add To Wishlist'}}</button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <p class="text-center">Loading...</p>
+    </ng-template>
+    </div>
+  </section>

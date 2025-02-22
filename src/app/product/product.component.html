@@ -1,0 +1,24 @@
+<div class='border border-gray-400 pb-2 pt-2 px-2'>
+    <div class='relative p-3'>
+        <button (click)="addToWishHandler()" class='absolute right-0 top-0 pointer cursor-pointer'>
+                <svg *ngIf="!isInWishlist()" stroke="currentColor" fill="red" stroke-width="0" viewBox="0 0 24 24" height="36px" width="36px" xmlns="http://www.w3.org/2000/svg" class="__web-inspector-hide-shortcut__"><path d="m12 20.703.343.667a.748.748 0 0 1-.686 0l-.003-.002-.007-.003-.025-.013a31.138 31.138 0 0 1-5.233-3.576C3.8 15.573 1 12.332 1 8.514v-.001C1 5.053 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262a31.148 31.148 0 0 1-5.233 3.576l-.025.013-.007.003-.002.001ZM6.736 4C4.657 4 2.5 5.88 2.5 8.514c0 3.107 2.324 5.96 4.861 8.12a29.655 29.655 0 0 0 4.566 3.175l.073.041.073-.04c.271-.153.661-.38 1.13-.674.94-.588 2.19-1.441 3.436-2.502 2.537-2.16 4.861-5.013 4.861-8.12C21.5 5.88 19.343 4 17.264 4c-2.106 0-3.801 1.389-4.553 3.643a.751.751 0 0 1-1.422 0C10.537 5.389 8.841 4 6.736 4Z"></path></svg>
+ 
+                <svg  *ngIf="isInWishlist()" stroke="currentColor" fill="red" stroke-width="0" viewBox="0 0 24 24" height="36px" width="36px" xmlns="http://www.w3.org/2000/svg" class=""><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 0 1-.686 0 16.709 16.709 0 0 1-.465-.252 31.147 31.147 0 0 1-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0 1 14 20.408Z"></path><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 0 1-.686 0 16.709 16.709 0 0 1-.465-.252 31.147 31.147 0 0 1-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0 1 14 20.408Z"></path></svg>
+                    </button>
+        <img class=' min-h-[200px] max-h-[200px] object-contain mx-auto' [src]="product().image" [alt]="product().title" />
+    </div>
+    <div >
+        <h3 class='min-h-14 text-lg'>{{product().title}}</h3>
+        <div class='flex justify-between align-middle my-4'>
+        <p>${{product().price}}</p> 
+           <app-rating [rating]="product().rating" />
+        </div>
+
+        <div class='flex align-middle mt-4 gap-1'>
+        <button (click)="addToCartHandler()"  class='flex-1 text-center bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300'>Add To Cart</button>
+        <a class='flex-1 text-center bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300' [routerLink]="['product/',product().id]">View</a>
+        </div>
+
+    </div>
+
+</div>
