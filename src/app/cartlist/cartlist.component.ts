@@ -14,7 +14,7 @@ import { CartitemComponent } from '../components/cartitem/cartitem.component';
 @Component({
   selector: 'app-cartlist',
   standalone: true,
-  imports: [CommonModule, CartitemComponent],
+  imports: [CommonModule, CartitemComponent, RouterLink],
   templateUrl: './cartlist.component.html',
   styleUrl: './cartlist.component.css'
 })
@@ -44,6 +44,12 @@ export class CartlistComponent  {
 
   removeItem(id: number) {
     this.cartService.removeFromCart(id);
+  }
+
+  removeAllItem(){
+    this.cartItems().map((item) => {
+      return this.removeItem(item.id)
+    })
   }
 
   updateQuantity(item: cartProduct, change: number) {

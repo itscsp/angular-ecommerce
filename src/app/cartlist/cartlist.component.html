@@ -1,5 +1,5 @@
 <div *ngIf="isOpen" (click)="closeCart()" class='h-screen w-screen overlay'></div>
-<div [ngClass]="{'right-0':isOpen, '-right-full': !isOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px]" >
+<div [ngClass]="{'right-0':isOpen, '-right-full': !isOpen}" class="w-full bg-white fixed top-0 h-full md:w-[35vw] xl:max-w-[30vw] translate-all duration-300 z-20 px-4 lg:px-[35px] overflow-auto" >
     <div class="flex items-center justify-between py-6 border-b">
       <p class="uppercase text-xl">Shopping Bag</p>
       <div (click)="closeCart()" class="cursor-pointer w-8 h-8 flex justify-center items-center">
@@ -22,8 +22,15 @@
     </ng-template>
 
 
-    <div class="flex py-2">
-      <a class="flex-1 text-center bg-red-500 text-white py-4 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+    <div *ngIf="cartItems().length > 0" class="flex flex-col py-2">
+      <div class="flex justify-between mb-4 mt-4 align-middle">
+        <p>Total: <span class="font-bold">${{totalAmount() | number: '1.2-2'}}</span></p>
+
+        <div (click)="removeAllItem()">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="36px" width="36px" xmlns="http://www.w3.org/2000/svg"><path fill="#D9D9D9" d="M292.7 840h438.6l24.2-512h-487z"></path><path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-504-72h304v72H360v-72zm371.3 656H292.7l-24.2-512h487l-24.2 512z"></path></svg>
+      </div>
+      </div>
+      <a routerLink="/place-order" routerLinkActive="router-link-active"  class="flex-1 text-center bg-red-500 text-white py-4 px-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
         Place Order
       </a>
     </div>
