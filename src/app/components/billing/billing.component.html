@@ -1,0 +1,112 @@
+<div class="w-full" *ngIf="currentUser()">
+    <h2 class="w-full text-2xl font-semibold uppercase mb-4">Billing Details</h2>
+    <form class="w-full flex flex-col gap-4" [formGroup]="addressForm">
+      <div class="w-full">
+        <div class="w-full flex flex-col">
+          <label class="text-sm font-medium" for="firstname">
+            First name <span class="text-red-500">*</span>
+          </label>
+          <input 
+            id="firstname"
+            type="text"
+            name="firstname"
+            formControlName="firstname"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          
+        </div>
+        
+        <div class="flex flex-col mt-4">
+          <label class="text-sm font-medium" for="lastname">
+            Last name <span class="text-red-500">*</span>
+          </label>
+          <input 
+            id="lastname"
+            type="text"
+            name="lastname"
+            formControlName="lastname"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label class="text-sm font-medium" for="phone">
+          Phone <span class="text-red-500">*</span>
+        </label>
+        <input 
+          id="number"
+          type="tel"
+          name="number"
+          formControlName="number"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        
+      </div>
+
+      <div class="flex flex-col">
+        <label class="text-sm font-medium" for="email">
+          Email Address <span class="text-red-500">*</span>
+        </label>
+        <input 
+          id="email"
+          type="email"
+          name="email"
+          formControlName="email"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        
+      </div>
+
+      <div class="flex flex-col">
+        <label class="text-sm font-medium" for="street1">
+          Street Address <span class="text-red-500">*</span>
+        </label>
+        <input 
+          id="street"
+          type="text"
+          name="street"
+          formControlName="street"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          
+        />
+        
+      </div>
+
+      <div class="flex flex-col">
+        <label class="text-sm font-medium" for="city">
+          City <span class="text-red-500">*</span>
+        </label>
+        <input 
+          id="city"
+          type="text"
+          name="city"
+          formControlName="city"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        
+      </div>
+
+      <div class="flex flex-col">
+        <label class="text-sm font-medium" for="postal-code">
+          Postal Code <span class="text-red-500">*</span>
+        </label>
+        <input 
+          id="zipcode"
+          type="text"
+          name="zipcode"
+          formControlName="zipcode"
+            class="border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+        
+      </div>
+
+      <button 
+        type="submit" 
+        class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors mt-4"
+      >
+        Save Billing Details
+      </button>
+    </form>
+  </div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { User } from './user.model';
 
 
@@ -14,7 +14,16 @@ export class UserService {
 
   constructor() {}
 
+
+  getCurrentUser() {
+    return this.userData;
+  }
+
   getUserData(): Observable<User> {
-    return this.httpClient.get<User>('https://fakestoreapi.com/users/1');
+    return this.httpClient.get<User>('https://fakestoreapi.com/users/1').pipe(
+      tap(user =>{
+        this.userData.set(user);
+      })
+    );
   }
 }

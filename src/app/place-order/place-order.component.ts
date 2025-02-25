@@ -4,11 +4,12 @@ import { CartService } from '../shared/services/cart.service';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from "../components/login/login.component";
 import { UserService } from '../shared/services/user.service';
+import { BillingCompoent } from '../components/billing/billing.component';
 
 @Component({
   selector: 'app-place-order',
   standalone: true,
-  imports: [RouterLink, CommonModule, LoginComponent],
+  imports: [RouterLink, CommonModule, LoginComponent, BillingCompoent],
   templateUrl: './place-order.component.html',
   styleUrls: ['./place-order.component.css']
 })

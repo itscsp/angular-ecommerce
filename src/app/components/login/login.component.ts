@@ -29,14 +29,12 @@ export class LoginComponent {
     const subscription = this.userService.getUserData().subscribe({
       next: (user) => {
         console.log('User data:', user);
-        this.userService.userData.set(user); // Update the user data signal
       },
       error: (error) => {
         console.log('Error:', error);
         this.isFetching.set(false);
       },
       complete: () => {
-        console.log('User data load completed');
         this.userService.isUserLogedIn.set(true); // Update login status to true
         this.isFetching.set(false);
       },
